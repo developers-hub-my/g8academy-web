@@ -5,9 +5,12 @@ export const site = {
     'Short, practitioner-led series for developers — each one ends in a graded assessment and a signed, publicly verifiable credential.',
   company: 'Developers Hub Sdn Bhd',
   registration: '202001019928 / 1376248-V',
-  url: 'https://g8academy.com',
-  app: 'https://app.g8academy.com',
-  email: 'hello@g8academy.com',
+  // One host. The static marketing pages answer at `/`; the application owns
+  // /catalogue, /learn, /verify and the rest. Verify URLs are permanent and
+  // public, so this value can never change once a credential has been issued.
+  url: 'https://academy.devhub.my',
+  app: 'https://academy.devhub.my',
+  email: 'academy@devhub.my',
   suite: 'https://g8suite.com',
 } as const;
 

@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://g8academy.com',
+  site: 'https://academy.devhub.my',
   integrations: [sitemap()],
   vite: { plugins: [tailwindcss()] },
 });
