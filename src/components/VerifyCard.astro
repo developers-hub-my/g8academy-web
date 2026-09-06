@@ -1,0 +1,91 @@
+---
+/**
+ * The verification page, rendered as a static preview.
+ * Status is shown FIRST and always carries a word, never colour alone
+ * (documentation/02-design/02-ui-design-system.md — BR-13 / NFR-ACC-03).
+ */
+interface Props {
+  status: 'verified' | 'expired' | 'revoked';
+  compact?: boolean;
+}
+const { status, compact = false } = Astro.props;
+
+const config = {
+  verified: {
+    label: 'Verified',
+    note: 'Signature checked against the issuer key.',
+    tone: 'text-verified',
+    dot: 'bg-verified',
+    ring: 'border-verified/30 bg-verified/8',
+  },
+  expired: {
+    label: 'Expired',
+    note: 'Genuinely earned. Validity period has ended.',
+    tone: 'text-expired',
+    dot: 'bg-expired',
+    ring: 'border-expired/30 bg-expired/8',
+  },
+  revoked: {
+    label: 'Revoked',
+    note: 'Withdrawn by the issuer — assessment integrity.',
+    tone: 'text-revoked',
+    dot: 'bg-revoked',
+    ring: 'border-revoked/30 bg-revoked/8',
+  },
+}[status];
+
+const rows = [
+  ['Issuer', 'Developers Hub Sdn Bhd'],
+  ['Holder', 'Nur Aisyah binti Rahman'],
+  ['Competency', 'Testing Laravel Applications'],
+  ['Level', 'Practitioner · 6–9 h'],
+  ['Assessed', 'Timed quiz · pass mark 70% · scored 86%'],
+  ['Issued', '14 August 2026'],
+];
+---
+<article
+  class="overflow-hidden rounded-[12px] border border-line bg-surface shadow-sm"
+  aria-label={`Example credential — ${config.label}`}
+>
+  <!-- Status first. The largest thing on the page. -->
+  <div class={`flex items-center gap-3 border-b px-5 py-4 ${config.ring}`}>
+    <span class={`h-2.5 w-2.5 shrink-0 rounded-full ${config.dot}`} aria-hidden="true"></span>
+    <div class="min-w-0 md:min-h-[2.75rem]">
+      <p class={`text-[19px] leading-tight font-bold ${config.tone}`}>{config.label}</p>
+      <p class="mt-0.5 text-[13px] text-muted">{config.note}</p>
+    </div>
+  </div>
+
+  <dl class="divide-y divide-line">
+    {rows.map(([k, v]) => (
+      <div class="grid grid-cols-[7.5rem_1fr] gap-3 px-5 py-3">
+        <dt class="text-[13px] text-muted">{k}</dt>
+        <dd class="min-w-0 text-[13px] font-medium break-words text-ink">{v}</dd>
+      </div>
+    ))}
+    <div class="grid grid-cols-[7.5rem_1fr] gap-3 px-5 py-3">
+      <dt class="text-[13px] text-muted">Credential</dt>
+      <dd class="min-w-0 font-mono text-[12px] break-all text-muted">
+        urn:uuid:9f2c4b71-8e3a-4d20-b6f1-2c7a5e0d9134
+      </dd>
+    </div>
+    <div class="grid grid-cols-[7.5rem_1fr] gap-3 px-5 py-3">
+      <dt class="text-[13px] text-muted">Series</dt>
+      <dd class="min-w-0 font-mono text-[12px] text-muted">laravel-testing · v2.1</dd>
+    </div>
+  </dl>
+
+  {!compact && (
+    <div class="flex flex-wrap gap-2 border-t border-line bg-surface-2 px-5 py-4">
+      <span class="rounded-full border border-line px-3 py-1 text-[12px] text-muted">
+        Open Badge 3.0
+      </span>
+      <span class="rounded-full border border-line px-3 py-1 text-[12px] text-muted">
+        PDF certificate
+      </span>
+      <span class="rounded-full border border-line px-3 py-1 text-[12px] text-muted">
+        No account required
+      </span>
+    </div>
+  )}
+</article>

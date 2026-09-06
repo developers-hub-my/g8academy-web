@@ -1,0 +1,31 @@
+---
+import { site } from '../../data/site';
+---
+<section class="border-t border-line bg-invert" aria-labelledby="cta-heading">
+  <div class="container-page py-16 text-center md:py-20">
+    <h2
+      id="cta-heading"
+      class="mx-auto max-w-2xl text-[28px] leading-tight font-extrabold tracking-tight text-white md:text-[36px]"
+    >
+      Two episodes are free. So is finding out what is assessed.
+    </h2>
+    <p class="mx-auto mt-5 max-w-xl text-[16px] leading-relaxed text-white/70">
+      No account, no card. Watch the opening of any series, read the learning outcomes, and decide
+      whether the credential is worth earning.
+    </p>
+    <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+      <a
+        href="#catalogue"
+        class="cursor-pointer rounded-[8px] bg-white px-6 py-3.5 text-[15px] font-semibold text-invert transition-opacity duration-200 hover:opacity-90"
+      >
+        Browse the catalogue
+      </a>
+      <a
+        href={`mailto:${site.email}`}
+        class="cursor-pointer rounded-[8px] border border-white/25 px-6 py-3.5 text-[15px] font-semibold text-white transition-colors duration-200 hover:border-white/60"
+      >
+        Talk to us
+      </a>
+    </div>
+  </div>
+</section>

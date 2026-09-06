@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Page not found">
+  <section class="container-page flex min-h-[60vh] flex-col items-center justify-center py-24 text-center">
+    <p class="font-mono text-[12px] tracking-widest text-primary uppercase">404</p>
+    <h1 class="mt-4 text-[32px] font-extrabold tracking-tight text-navy">This page does not exist</h1>
+    <p class="mt-4 max-w-md text-[16px] leading-relaxed text-muted">
+      If you were checking a credential, the verification link has the form
+      <span class="font-mono text-[13px] text-ink">/verify/&lt;id&gt;</span> — a revoked credential
+      still resolves, so a missing page means the link itself is wrong.
+    </p>
+    <a
+      href="/"
+      class="mt-8 cursor-pointer rounded-[8px] bg-primary px-6 py-3 text-[15px] font-semibold text-white transition-opacity duration-200 hover:opacity-90"
+    >
+      Back to the homepage
+    </a>
+  </section>
+</Base>

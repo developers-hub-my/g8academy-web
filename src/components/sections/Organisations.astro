@@ -1,0 +1,51 @@
+---
+import Section from '../Section.astro';
+
+const features = [
+  ['Seats and cohorts', 'Buy seats from 20 up, invite by CSV or verified SSO domain, and assign a pathway with a target completion date.'],
+  ['Your identity provider', 'OIDC or SAML — G8ID, Azure AD, Google Workspace or Keycloak. Learners land on their assigned pathway.'],
+  ['Reporting that stays yours', 'Completion and credential reports for your seats only, exportable to CSV or PDF.'],
+  ['Credentials belong to the learner', 'Reclaiming a seat never revokes a credential. People keep what they earned when they move on.'],
+];
+---
+<Section
+  id="organisations"
+  alt
+  eyebrow="For teams and institutions"
+  title="Train a cohort. Get evidence, not attendance."
+  lede="For corporate L&D, universities and polytechnics: seats, SSO, cohorts and reports — with the same assessment and the same pass mark as everyone else."
+>
+  <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+    <dl class="grid gap-x-8 gap-y-7 sm:grid-cols-2">
+      {features.map(([t, d]) => (
+        <div>
+          <dt class="text-[15px] font-bold text-navy">{t}</dt>
+          <dd class="mt-2 text-[14px] leading-relaxed text-muted">{d}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <div class="rounded-[12px] border border-line bg-surface p-7">
+      <p class="font-mono text-[12px] tracking-widest text-primary uppercase">Seats</p>
+      <p class="mt-3 flex items-baseline gap-1">
+        <span class="text-[32px] leading-none font-extrabold tracking-tight text-navy">RM 249</span>
+        <span class="text-[14px] text-muted">/seat/year</span>
+      </p>
+      <p class="mt-3 text-[14px] leading-relaxed text-muted">
+        Minimum 20 seats. Invoice or purchase order. Includes the org dashboard, SSO, cohorts and
+        scoped reporting.
+      </p>
+      <a
+        href="mailto:hello@g8academy.com?subject=G8Academy%20seats"
+        class="mt-6 block cursor-pointer rounded-[8px] bg-primary px-5 py-3 text-center text-[14px] font-semibold text-white transition-opacity duration-200 hover:opacity-90"
+      >
+        Talk to us about seats
+      </a>
+      <p class="mt-5 border-t border-line pt-5 text-[13px] leading-relaxed text-muted">
+        Credit-bearing credentials are co-issued with a Higher Education Provider that holds the
+        academic approval. If that is you, we built the platform for it — issuers approve their own
+        templates and can revoke anything issued under their name.
+      </p>
+    </div>
+  </div>
+</Section>

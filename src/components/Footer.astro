@@ -1,0 +1,70 @@
+---
+import Logo from './Logo.astro';
+import { site } from '../data/site';
+
+const cols = [
+  {
+    title: 'Product',
+    links: [
+      { href: '/#how', label: 'How it works' },
+      { href: '/#levels', label: 'Levels' },
+      { href: '/#pricing', label: 'Pricing' },
+      { href: '/#organisations', label: 'For teams' },
+    ],
+  },
+  {
+    title: 'Credentials',
+    links: [
+      { href: '/#verify', label: 'Verify a credential' },
+      { href: '/#faq', label: 'FAQ' },
+      { href: 'https://www.imsglobal.org/spec/ob/v3p0/', label: 'Open Badges 3.0' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { href: 'https://devhub.my', label: 'Developers Hub' },
+      { href: site.suite, label: 'G8Suite' },
+      { href: `mailto:${site.email}`, label: 'Contact' },
+    ],
+  },
+];
+const year = new Date().getFullYear();
+---
+<footer class="border-t border-line bg-surface-2">
+  <div class="container-page py-14">
+    <div class="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
+      <div>
+        <Logo />
+        <p class="mt-4 max-w-xs text-[14px] leading-relaxed text-muted">
+          Short, assessed, employer-verifiable credentials for developers in Malaysia and
+          Southeast Asia.
+        </p>
+      </div>
+      {cols.map((c) => (
+        <div>
+          <h2 class="text-[13px] font-semibold tracking-wide text-navy uppercase">{c.title}</h2>
+          <ul class="mt-4 space-y-2.5">
+            {c.links.map((l) => (
+              <li>
+                <a
+                  href={l.href}
+                  class="cursor-pointer text-[14px] text-muted transition-colors duration-200 hover:text-primary"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div
+      class="mt-12 flex flex-col gap-2 border-t border-line pt-8 text-[13px] text-muted md:flex-row md:items-center md:justify-between"
+    >
+      <p>&copy; {year} {site.company}. All rights reserved.</p>
+      <p class="font-mono text-[12px]">{site.registration}</p>
+    </div>
+  </div>
+</footer>

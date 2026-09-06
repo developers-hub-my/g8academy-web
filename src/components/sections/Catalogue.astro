@@ -1,0 +1,40 @@
+---
+import Section from '../Section.astro';
+
+/* Launch catalogue. Status is stated plainly — nothing here claims to be live yet. */
+const series = [
+  { title: 'Testing Laravel Applications', level: 'Practitioner', hours: '7 h', topic: 'Laravel' },
+  { title: 'Laravel Queues in Production', level: 'Professional', hours: '9 h', topic: 'Laravel' },
+  { title: 'PHP 8.4 for Working Developers', level: 'Foundation', hours: '5 h', topic: 'PHP' },
+  { title: 'Designing Modular Monoliths', level: 'Architect', hours: '11 h', topic: 'Architecture' },
+  { title: 'Livewire Beyond the Basics', level: 'Practitioner', hours: '8 h', topic: 'Livewire' },
+  { title: 'Securing Laravel APIs', level: 'Professional', hours: '9 h', topic: 'Security' },
+];
+---
+<Section
+  id="catalogue"
+  alt
+  eyebrow="Catalogue"
+  title="The launch series"
+  lede="Each series states its learning outcomes and exactly what is assessed before you pay. The first two episodes of every series are free, with no account."
+>
+  <ul class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+    {series.map((s) => (
+      <li
+        class="group flex flex-col rounded-[12px] border border-line bg-surface p-6 transition-colors duration-200 hover:border-primary"
+      >
+        <div class="flex items-center justify-between gap-3">
+          <span class="rounded-full bg-tint px-2.5 py-1 text-[12px] font-semibold text-primary">
+            {s.level}
+          </span>
+          <span class="font-mono text-[12px] text-muted">{s.hours}</span>
+        </div>
+        <h3 class="mt-4 text-[17px] leading-snug font-bold text-navy">{s.title}</h3>
+        <p class="mt-2 text-[13px] text-muted">{s.topic}</p>
+        <p class="mt-5 border-t border-line pt-4 text-[13px] text-muted">
+          In production &mdash; free preview at launch
+        </p>
+      </li>
+    ))}
+  </ul>
+</Section>

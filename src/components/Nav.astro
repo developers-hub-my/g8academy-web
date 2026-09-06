@@ -1,0 +1,47 @@
+---
+import Logo from './Logo.astro';
+import { site } from '../data/site';
+
+const links = [
+  { href: '/#how', label: 'How it works' },
+  { href: '/#levels', label: 'Levels' },
+  { href: '/#verify', label: 'Verification' },
+  { href: '/#pricing', label: 'Pricing' },
+  { href: '/#organisations', label: 'For teams' },
+];
+---
+<header class="sticky top-0 z-40 border-b border-line bg-surface/85 backdrop-blur-md">
+  <nav class="container-page flex h-16 items-center justify-between gap-6" aria-label="Primary">
+    <a href="/" class="cursor-pointer rounded-[8px]" aria-label={`${site.name} home`}>
+      <Logo />
+    </a>
+
+    <ul class="hidden items-center gap-7 lg:flex">
+      {links.map((l) => (
+        <li>
+          <a
+            href={l.href}
+            class="cursor-pointer text-[14px] font-medium text-muted transition-colors duration-200 hover:text-primary"
+          >
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="flex items-center gap-3">
+      <a
+        href={site.app}
+        class="hidden cursor-pointer rounded-[8px] px-3 py-2 text-[14px] font-medium text-navy transition-colors duration-200 hover:text-primary sm:inline-block"
+      >
+        Sign in
+      </a>
+      <a
+        href="/#catalogue"
+        class="cursor-pointer rounded-[8px] bg-primary px-4 py-2.5 text-[14px] font-semibold text-white transition-opacity duration-200 hover:opacity-90"
+      >
+        Browse series
+      </a>
+    </div>
+  </nav>
+</header>

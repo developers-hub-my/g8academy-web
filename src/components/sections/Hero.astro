@@ -1,0 +1,72 @@
+---
+import VerifyCard from '../VerifyCard.astro';
+import { site } from '../../data/site';
+---
+<section class="relative overflow-hidden border-b border-line bg-surface">
+  <div
+    class="pointer-events-none absolute inset-0 opacity-[0.35]"
+    aria-hidden="true"
+    style="background-image:linear-gradient(to right,var(--color-line) 1px,transparent 1px),linear-gradient(to bottom,var(--color-line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 40%,transparent 100%)"
+  >
+  </div>
+
+  <div class="container-page relative grid gap-14 py-16 md:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-20">
+    <div>
+      <p
+        class="inline-flex items-center gap-2 rounded-full border border-line bg-tint px-3 py-1.5 font-mono text-[12px] tracking-wide text-primary"
+      >
+        Micro-credentials for developers · Malaysia
+      </p>
+
+      <h1 class="mt-6 text-[40px] leading-[1.05] font-extrabold tracking-tight text-navy md:text-[56px]">
+        Learn it.<br />Prove it.
+      </h1>
+
+      <p class="mt-6 max-w-xl text-[17px] leading-relaxed text-muted">
+        Short, practitioner-led series — 4 to 12 hours on one competency. Every one ends in a
+        graded assessment and a <strong class="font-semibold text-ink">signed credential an
+        employer can verify at a public URL</strong>, without an account and without taking your
+        word for it.
+      </p>
+
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+        <a
+          href="#catalogue"
+          class="cursor-pointer rounded-[8px] bg-primary px-6 py-3.5 text-center text-[15px] font-semibold text-white transition-opacity duration-200 hover:opacity-90"
+        >
+          Browse the catalogue
+        </a>
+        <a
+          href="#verify"
+          class="cursor-pointer rounded-[8px] border border-line bg-surface px-6 py-3.5 text-center text-[15px] font-semibold text-navy transition-colors duration-200 hover:border-primary hover:text-primary"
+        >
+          See how verification works
+        </a>
+      </div>
+
+      <dl class="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-line pt-8">
+        {[
+          ['2 episodes', 'free, no account'],
+          ['70%', 'pass mark, every channel'],
+          ['< 60 s', 'to credential on pass'],
+        ].map(([stat, label]) => (
+          <div>
+            <dt class="text-[19px] font-bold text-navy">{stat}</dt>
+            <dd class="mt-1 text-[13px] leading-snug text-muted">{label}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+
+    <div class="lg:pl-4">
+      <p class="mb-3 font-mono text-[12px] tracking-wide text-muted">
+        {site.url.replace('https://', '')}/verify/9f2c4b71
+      </p>
+      <VerifyCard status="verified" />
+      <p class="mt-4 text-[13px] leading-relaxed text-muted">
+        This is what a hiring manager sees. One link, no login, and the signature is checked
+        against the issuer&rsquo;s published key — not looked up in a database they have to trust.
+      </p>
+    </div>
+  </div>
+</section>

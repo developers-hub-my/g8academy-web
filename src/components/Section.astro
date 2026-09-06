@@ -1,0 +1,36 @@
+---
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title: string;
+  lede?: string;
+  alt?: boolean;
+  class?: string;
+}
+const { id, eyebrow, title, lede, alt = false, class: cls = '' } = Astro.props;
+---
+<section
+  id={id}
+  class={`section-y ${alt ? 'bg-surface-2' : 'bg-surface'} ${cls}`}
+  aria-labelledby={id ? `${id}-heading` : undefined}
+>
+  <div class="container-page">
+    <header class="max-w-2xl">
+      {eyebrow && (
+        <p class="font-mono text-[12px] font-medium tracking-widest text-primary uppercase">
+          {eyebrow}
+        </p>
+      )}
+      <h2
+        id={id ? `${id}-heading` : undefined}
+        class="mt-3 text-[26px] leading-tight font-bold tracking-tight text-navy md:text-[32px]"
+      >
+        {title}
+      </h2>
+      {lede && <p class="mt-4 text-[16px] leading-relaxed text-muted">{lede}</p>}
+    </header>
+    <div class="mt-10 md:mt-12">
+      <slot />
+    </div>
+  </div>
+</section>

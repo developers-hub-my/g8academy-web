@@ -1,0 +1,29 @@
+---
+import Section from '../Section.astro';
+import { steps } from '../../data/site';
+---
+<Section
+  id="how"
+  eyebrow="How it works"
+  title="Four steps, and the last one is the point"
+  lede="Watching is the input. The credential — and the fact that anyone can check it — is the output."
+>
+  <ol class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+    {steps.map((s) => (
+      <li class="relative rounded-[12px] border border-line bg-surface p-6">
+        <span class="font-mono text-[12px] font-medium tracking-widest text-primary">{s.n}</span>
+        <h3 class="mt-3 text-[17px] font-bold text-navy">{s.title}</h3>
+        <p class="mt-2.5 text-[14px] leading-relaxed text-muted">{s.body}</p>
+      </li>
+    ))}
+  </ol>
+
+  <div class="mt-8 rounded-[12px] border border-line bg-tint p-6">
+    <p class="text-[14px] leading-relaxed text-ink">
+      <strong class="font-semibold">The assessment unlocks at 90% watched</strong>, and every
+      question maps to a stated learning outcome. Fail, and the result page names the outcomes you
+      missed — not just a score. Attempts are limited and there is a cooldown between them, so the
+      credential keeps meaning something.
+    </p>
+  </div>
+</Section>

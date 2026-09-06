@@ -1,0 +1,45 @@
+---
+import Section from '../Section.astro';
+import VerifyCard from '../VerifyCard.astro';
+
+const guarantees = [
+  {
+    t: 'Cryptographic, not a lookup',
+    d: 'Every credential is an Open Badge 3.0 — a W3C Verifiable Credential — signed by the issuer key. It verifies against the published key, so nobody has to trust our database, or us.',
+  },
+  {
+    t: 'Revoked credentials still resolve',
+    d: 'A withdrawn credential does not vanish into a 404 that reads like a typo. The URL keeps working and says “Revoked”, with the reason category.',
+  },
+  {
+    t: 'Bound to a series version',
+    d: 'The credential names the exact version you were assessed against. Publishing a new version never changes what an older credential attests.',
+  },
+  {
+    t: 'Colour is never the only signal',
+    d: 'Every state carries its word — Verified, Expired, Revoked. The page is readable if you cannot tell green from red.',
+  },
+];
+---
+<Section
+  id="verify"
+  alt
+  eyebrow="Verification"
+  title="Three states, and all three are honest"
+  lede="The status is the first thing on the page, in words as well as colour. Then the issuer, the holder, the competency, what was assessed, and when."
+>
+  <div class="grid gap-6 lg:grid-cols-3">
+    <VerifyCard status="verified" compact />
+    <VerifyCard status="expired" compact />
+    <VerifyCard status="revoked" compact />
+  </div>
+
+  <div class="mt-12 grid gap-x-10 gap-y-8 border-t border-line pt-10 md:grid-cols-2">
+    {guarantees.map((g) => (
+      <div>
+        <h3 class="text-[15px] font-bold text-navy">{g.t}</h3>
+        <p class="mt-2 text-[14px] leading-relaxed text-muted">{g.d}</p>
+      </div>
+    ))}
+  </div>
+</Section>

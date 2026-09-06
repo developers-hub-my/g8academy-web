@@ -1,0 +1,118 @@
+---
+import Section from '../Section.astro';
+
+const plans = [
+  {
+    name: 'Monthly',
+    price: 'RM 39',
+    period: '/month',
+    blurb: 'All-access video while you need it.',
+    features: [
+      'Every series, every episode',
+      'Progress, resume and captions',
+      'Downloadable source and notes',
+      'Assessment attempts sold separately',
+    ],
+    cta: 'Start monthly',
+    featured: false,
+  },
+  {
+    name: 'Annual',
+    price: 'RM 349',
+    period: '/year',
+    blurb: 'All-access video, plus two assessment attempts.',
+    features: [
+      'Everything in Monthly',
+      '2 assessment attempts included',
+      'Credential on pass, at no extra cost',
+      '25% below the monthly rate',
+    ],
+    cta: 'Start annual',
+    featured: true,
+  },
+  {
+    name: 'Per credential',
+    price: 'RM 149',
+    period: '– 399',
+    blurb: 'One competency. No subscription.',
+    features: [
+      'One series or pathway',
+      '2 assessment attempts included',
+      'The signed credential on pass',
+      'Priced by level, not by series',
+    ],
+    cta: 'Buy a credential',
+    featured: false,
+  },
+];
+---
+<Section
+  id="pricing"
+  eyebrow="Pricing"
+  title="Learning and proof are priced separately"
+  lede="A subscription buys access to the video. The assessment and the credential are what an employer actually checks, so they are bought deliberately — on their own, or bundled into an annual plan."
+>
+  <div class="grid gap-6 lg:grid-cols-3">
+    {plans.map((p) => (
+      <div
+        class={`flex flex-col rounded-[12px] border bg-surface p-7 ${
+          p.featured ? 'border-primary shadow-sm' : 'border-line'
+        }`}
+      >
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="text-[15px] font-bold text-navy">{p.name}</h3>
+          {p.featured && (
+            <span class="rounded-full bg-tint px-2.5 py-1 text-[12px] font-semibold text-primary">
+              Best value
+            </span>
+          )}
+        </div>
+        <p class="mt-5 flex items-baseline gap-1">
+          <span class="text-[32px] leading-none font-extrabold tracking-tight text-navy">
+            {p.price}
+          </span>
+          <span class="text-[14px] text-muted">{p.period}</span>
+        </p>
+        <p class="mt-3 text-[14px] leading-relaxed text-muted">{p.blurb}</p>
+
+        <ul class="mt-6 flex-1 space-y-3 border-t border-line pt-6">
+          {p.features.map((f) => (
+            <li class="flex gap-2.5 text-[14px] leading-snug text-ink">
+              <svg
+                viewBox="0 0 20 20"
+                class="mt-0.5 h-4 w-4 shrink-0 text-primary"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 10.5l4 4 8-8"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href="#catalogue"
+          class={`mt-7 cursor-pointer rounded-[8px] px-5 py-3 text-center text-[14px] font-semibold transition-opacity duration-200 hover:opacity-90 ${
+            p.featured
+              ? 'bg-primary text-white'
+              : 'border border-line bg-surface text-navy hover:border-primary hover:text-primary'
+          }`}
+        >
+          {p.cta}
+        </a>
+      </div>
+    ))}
+  </div>
+
+  <p class="mt-6 text-[13px] leading-relaxed text-muted">
+    All prices in MYR, excluding SST. Every transaction produces an LHDN e-Invoice. Extra
+    assessment attempts are RM 49. Refundable within 7 days if under 20% of a series is watched —
+    but not once an assessment attempt has started.
+  </p>
+</Section>

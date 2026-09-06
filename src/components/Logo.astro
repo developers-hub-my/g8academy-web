@@ -1,0 +1,17 @@
+---
+interface Props { class?: string }
+const { class: cls = 'h-7' } = Astro.props;
+---
+<span class={`inline-flex items-center gap-2 ${cls}`}>
+  <svg viewBox="0 0 32 32" class="h-7 w-7" aria-hidden="true" fill="none">
+    <rect width="32" height="32" rx="8" fill="currentColor" class="text-primary" />
+    <path
+      d="M10 16.5l4 4 8-8"
+      stroke="#fff"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+  <span class="text-[17px] font-extrabold tracking-tight text-navy">G8Academy</span>
+</span>
