@@ -1,54 +1,115 @@
 @import 'tailwindcss';
 
 /* ---------------------------------------------------------------------------
-   G8Academy design tokens — mirrors documentation/02-design/02-ui-design-system.md
-   Key decision: ONE interactive colour (primary). Status hues are reserved
-   exclusively for credential/assessment state, so status is never ambiguous.
+   G8Academy design tokens.
+
+   These mirror the application's palette (g8academy-app/resources/css/app.css)
+   one-for-one, so the marketing site and the product are the same brand:
+
+     brand — deep cobalt, the single interactive colour. Flux reads brand-600
+             as --color-accent in the app, so `primary` here is that same stop.
+     gold  — the achievement/credential accent. Seal rim, credential chrome.
+             Never interactive text: gold-600 is 4.1:1 on white, under AA, so
+             text uses gold-700 in light and gold-400 in dark.
+
+   Key rule kept from the original system: ONE interactive colour. Status hues
+   are reserved exclusively for credential state, so status is never ambiguous.
    --------------------------------------------------------------------------- */
 @theme {
-  --color-primary: #1e40af;
-  --color-navy: #172554;
-  --color-tint: #eef2ff;
-  --color-ink: #1f2937;
-  --color-muted: #6b7280;
+  /* Semantic tokens — every component styles against these, not raw scales. */
+  /* Two brand stops, split exactly as the app splits them:
+       accent  — the button/solid fill. Always brand-600, in both themes: it
+                 carries white text at 7.2:1, where the lighter dark-mode stop
+                 would only manage 2.6:1.
+       primary — brand as *text*: links, hovers, the eyebrow. This one lightens
+                 in dark mode (app's --color-accent-content) so it stays legible
+                 against a near-black ground. */
+  --color-accent: #2450ea;    /* brand-600 */
+  --color-accent-fg: #ffffff;
+  --color-primary: #2450ea;   /* brand-600 */
+  --color-navy: #172051;      /* brand-950 — headings */
+  --color-tint: #eef3ff;      /* brand-50  — soft brand wash */
+  --color-ink: #262626;       /* neutral-800 */
+  --color-muted: #737373;     /* neutral-500 */
   --color-surface: #ffffff;
-  --color-surface-2: #f9fafb;
-  --color-line: #e5e7eb;
+  --color-surface-2: #fafafa; /* neutral-50 */
+  --color-line: #e5e5e5;      /* neutral-200 */
+  --color-gold: #8f4f11;      /* gold-700 — AA as text on white */
 
   /* Always dark, in both themes — backs white text on inverted bands.
      `navy` flips light in dark mode, so it must never be used as a background. */
-  --color-invert: #172554;
+  --color-invert: #172051;
 
   /* status only — never for navigation, buttons or decoration */
   --color-verified: #059669;
-  --color-expired: #d97706;
+  --color-expired: #b56b0f;
   --color-revoked: #dc2626;
 
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-display: 'Newsreader', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
 
   --radius-input: 4px;
   --radius-btn: 8px;
   --radius-card: 12px;
 }
 
-/* Dark mode.
-   NOTE: Tailwind v4 does not support `@theme` inside `@media` — nesting it there
-   silently hoists the values and drops the light palette. Override the plain
-   custom properties on :root instead. */
+/* Dark mode, two ways in.
+
+   `.dark` on <html> is the explicit choice the header toggle writes; the media
+   query is the visitor who never touched it. The block is duplicated rather
+   than merged because a media rule and a class rule cannot share one selector
+   list, and `light-dark()` breaks Tailwind's `/opacity` color-mix.
+
+   NOTE: Tailwind v4 does not support `@theme` inside `@media` — nesting it
+   there silently hoists the values and drops the light palette. Override the
+   plain custom properties instead. */
+:root {
+  color-scheme: light;
+
+  /* Which half of the theme toggle is visible. Declared here, flipped in the
+     two dark blocks below, so dark state has exactly one source of truth. */
+  --icon-light: block;
+  --icon-dark: none;
+}
+
+:root.dark {
+  color-scheme: dark;
+  --icon-light: none;
+  --icon-dark: block;
+  --color-primary: #6f8ffa;   /* brand-400 — app's dark accent-content */
+  /* --color-accent deliberately does NOT lighten — see the note above. */
+  --color-navy: #e5e5e5;
+  --color-tint: #172051;
+  --color-ink: #e5e5e5;
+  --color-muted: #a3a3a3;
+  --color-surface: #0a0a0a;
+  --color-surface-2: #171717;
+  --color-line: #262626;
+  --color-gold: #e5a92f;      /* gold-400 — 8.7:1 on neutral-900 */
+  --color-invert: #172051;
+  --color-verified: #34d399;
+  --color-expired: #e5a92f;
+  --color-revoked: #f87171;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --color-primary: #60a5fa;
-    --color-navy: #e2e8f0;
-    --color-tint: #111a2e;
-    --color-ink: #e2e8f0;
-    --color-muted: #94a3b8;
-    --color-surface: #0b1220;
-    --color-surface-2: #111a2e;
-    --color-line: #1e293b;
-    --color-invert: #111a2e;
+  :root:not(.light) {
+    color-scheme: dark;
+    --icon-light: none;
+    --icon-dark: block;
+    --color-primary: #6f8ffa;
+    --color-navy: #e5e5e5;
+    --color-tint: #172051;
+    --color-ink: #e5e5e5;
+    --color-muted: #a3a3a3;
+    --color-surface: #0a0a0a;
+    --color-surface-2: #171717;
+    --color-line: #262626;
+    --color-gold: #e5a92f;
+    --color-invert: #172051;
     --color-verified: #34d399;
-    --color-expired: #fbbf24;
+    --color-expired: #e5a92f;
     --color-revoked: #f87171;
   }
 }
@@ -78,7 +139,15 @@
     outline-offset: 2px;
     border-radius: 2px;
   }
-  ::selection { background: var(--color-primary); color: #fff; }
+  ::selection { background: var(--color-accent); color: var(--color-accent-fg); }
+
+  /* Theme toggle glyphs — see --icon-light / --icon-dark above. */
+  .icon-light { display: var(--icon-light); }
+  .icon-dark { display: var(--icon-dark); }
+
+  /* Native disclosure marker off; the button supplies its own chevron. */
+  summary::-webkit-details-marker { display: none; }
+  summary { list-style: none; }
 }
 
 @utility container-page {

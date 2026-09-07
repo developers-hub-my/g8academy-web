@@ -1,5 +1,6 @@
 ---
 import Logo from './Logo.astro';
+import ThemeToggle from './ThemeToggle.astro';
 import { site } from '../data/site';
 
 const links = [
@@ -11,7 +12,7 @@ const links = [
 ];
 ---
 <header class="sticky top-0 z-40 border-b border-line bg-surface/85 backdrop-blur-md">
-  <nav class="container-page flex h-16 items-center justify-between gap-6" aria-label="Primary">
+  <nav class="container-page flex h-16 items-center justify-between gap-4" aria-label="Primary">
     <a href="/" class="cursor-pointer rounded-[8px]" aria-label={`${site.name} home`}>
       <Logo />
     </a>
@@ -29,7 +30,9 @@ const links = [
       ))}
     </ul>
 
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2 sm:gap-3">
+      <ThemeToggle />
+
       <a
         href={site.app}
         class="hidden cursor-pointer rounded-[8px] px-3 py-2 text-[14px] font-medium text-navy transition-colors duration-200 hover:text-primary sm:inline-block"
@@ -38,10 +41,83 @@ const links = [
       </a>
       <a
         href="/#catalogue"
-        class="cursor-pointer rounded-[8px] bg-primary px-4 py-2.5 text-[14px] font-semibold text-white transition-opacity duration-200 hover:opacity-90"
+        class="hidden cursor-pointer rounded-[8px] bg-accent px-3.5 py-2.5 text-[14px] font-semibold whitespace-nowrap text-white transition-opacity duration-200 hover:opacity-90 sm:inline-block sm:px-4"
       >
         Browse series
       </a>
+
+      {/*
+        Mobile menu. `<details>` is the disclosure the platform already ships —
+        it opens without JS, is keyboard operable and is announced as expanded
+        or collapsed for free. The only script is the one that closes it after
+        a jump link, which the element cannot know to do by itself.
+      */}
+      <details id="mobile-menu" class="relative lg:hidden">
+        <summary
+          class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-[8px] border border-line text-navy transition-colors duration-200 hover:text-primary"
+          aria-label="Open menu"
+        >
+          <svg
+            class="h-5 w-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </summary>
+
+        <div
+          class="fixed inset-x-0 top-16 z-40 max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-line bg-surface p-4 shadow-lg"
+        >
+          <ul class="flex flex-col">
+            {links.map((l) => (
+              <li>
+                <a
+                  href={l.href}
+                  class="block cursor-pointer rounded-[8px] px-3 py-3 text-[15px] font-medium text-ink transition-colors duration-200 hover:bg-surface-2 hover:text-primary"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+            <li class="mt-2 border-t border-line pt-2 sm:hidden">
+              <a
+                href={site.app}
+                class="block cursor-pointer rounded-[8px] px-3 py-3 text-[15px] font-medium text-ink transition-colors duration-200 hover:bg-surface-2 hover:text-primary"
+              >
+                Sign in
+              </a>
+            </li>
+            <li class="mt-2 sm:hidden">
+              <a
+                href="/#catalogue"
+                class="block cursor-pointer rounded-[8px] bg-accent px-3 py-3 text-center text-[15px] font-semibold text-white transition-opacity duration-200 hover:opacity-90"
+              >
+                Browse series
+              </a>
+            </li>
+          </ul>
+        </div>
+      </details>
     </div>
   </nav>
 </header>
+
+<script>
+  const menu = document.getElementById('mobile-menu') as HTMLDetailsElement | null;
+  if (menu) {
+    // Same-page anchors never reload, so nothing else would close the panel.
+    menu.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) menu.open = false;
+    });
+    // A resize past the lg breakpoint hides the panel but leaves it open,
+    // which would then reappear on the way back down.
+    matchMedia('(min-width: 64rem)').addEventListener('change', (e) => {
+      if (e.matches) menu.open = false;
+    });
+  }
+</script>

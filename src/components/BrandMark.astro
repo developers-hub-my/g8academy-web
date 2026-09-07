@@ -1,0 +1,66 @@
+---
+/**
+ * G8Academy brand mark — a direct port of the application's `x-brand-mark`
+ * (g8academy-app/resources/views/components/brand-mark.blade.php). Any change
+ * to the seal must be made in both places or the two surfaces drift.
+ *
+ * The octagon is the point: eight sides for the 8, and an octagon reads as a
+ * certification seal, which is what the product issues. Gold rim = achievement
+ * accent; cobalt core = the interactive brand colour, so the mark and the UI
+ * share one palette.
+ *
+ * Gradient ids are per-instance — the nav, the footer and the credential card
+ * render the mark on the same page, and duplicate ids are invalid markup.
+ */
+interface Props {
+  class?: string;
+}
+const { class: cls = 'h-8 w-8' } = Astro.props;
+const uid = `g8-${Math.random().toString(36).slice(2, 10)}`;
+---
+<svg
+  viewBox="0 0 48 48"
+  class:list={['shrink-0', cls]}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <defs>
+      <linearGradient id={`${uid}-rim`} x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f3d992" />
+        <stop offset=".5" stop-color="#e5a92f" />
+        <stop offset="1" stop-color="#b56b0f" />
+      </linearGradient>
+      <linearGradient id={`${uid}-core`} x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#4a6bf5" />
+        <stop offset="1" stop-color="#1e3585" />
+      </linearGradient>
+    </defs>
+
+    <!-- Seal rim. The stroke of the same paint rounds the eight corners. -->
+    <path
+      d="M45.25 32.8 32.8 45.25H15.2L2.75 32.8V15.2L15.2 2.75h17.6L45.25 15.2z"
+      fill={`url(#${uid}-rim)`}
+      stroke={`url(#${uid}-rim)`}
+      stroke-width="2.5"
+      stroke-linejoin="round"
+    />
+    <!-- Core. -->
+    <path
+      d="M42.02 31.46 31.46 42.02H16.54L5.98 31.46V16.54L16.54 5.98h14.92L42.02 16.54z"
+      fill={`url(#${uid}-core)`}
+      stroke={`url(#${uid}-core)`}
+      stroke-width="1.5"
+      stroke-linejoin="round"
+    />
+    <!-- The G: one 320° arc, closed by the crossbar. -->
+    <path
+      d="M31.66 17.57A10 10 0 1 0 34 24h-8.5"
+      stroke="#fff"
+      stroke-width="4.4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
