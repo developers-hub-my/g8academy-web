@@ -4,6 +4,8 @@
  * Status is shown FIRST and always carries a word, never colour alone
  * (documentation/02-design/02-ui-design-system.md — BR-13 / NFR-ACC-03).
  */
+import BrandMark from './BrandMark.astro';
+
 interface Props {
   status: 'verified' | 'expired' | 'revoked';
   compact?: boolean;
@@ -54,22 +56,25 @@ const rows = [
       <p class={`text-[19px] leading-tight font-bold ${config.tone}`}>{config.label}</p>
       <p class="mt-0.5 text-[13px] text-muted">{config.note}</p>
     </div>
+    <!-- Issuer seal. The gold rim is the achievement accent — this is the one
+         surface on the site that is literally a credential, so it carries it. -->
+    <BrandMark class="ml-auto hidden h-9 w-9 sm:block" />
   </div>
 
   <dl class="divide-y divide-line">
     {rows.map(([k, v]) => (
-      <div class="grid grid-cols-[7.5rem_1fr] gap-3 px-5 py-3">
+      <div class="grid grid-cols-[6rem_1fr] gap-3 px-5 py-3 sm:grid-cols-[7.5rem_1fr]">
         <dt class="text-[13px] text-muted">{k}</dt>
         <dd class="min-w-0 text-[13px] font-medium break-words text-ink">{v}</dd>
       </div>
     ))}
-    <div class="grid grid-cols-[7.5rem_1fr] gap-3 px-5 py-3">
+    <div class="grid grid-cols-[6rem_1fr] gap-3 px-5 py-3 sm:grid-cols-[7.5rem_1fr]">
       <dt class="text-[13px] text-muted">Credential</dt>
       <dd class="min-w-0 font-mono text-[12px] break-all text-muted">
         urn:uuid:9f2c4b71-8e3a-4d20-b6f1-2c7a5e0d9134
       </dd>
     </div>
-    <div class="grid grid-cols-[7.5rem_1fr] gap-3 px-5 py-3">
+    <div class="grid grid-cols-[6rem_1fr] gap-3 px-5 py-3 sm:grid-cols-[7.5rem_1fr]">
       <dt class="text-[13px] text-muted">Series</dt>
       <dd class="min-w-0 font-mono text-[12px] text-muted">laravel-testing · v2.1</dd>
     </div>

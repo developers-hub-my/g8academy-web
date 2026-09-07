@@ -21,7 +21,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+
+    <!-- Icons — the same seal the application serves, byte for byte. -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
@@ -29,17 +35,31 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {/* Inter carries the UI, Newsreader is the display serif — the same two
+        faces and the same host the application uses, so a visitor moving from
+        the marketing site into the product re-uses a warm font cache. */}
+    <link rel="preconnect" href="https://fonts.bunny.net" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800|newsreader:400,500,600&display=swap"
     />
+
+    {/* Applies the stored theme before first paint. Inline and blocking on
+        purpose: deferred, the page would flash the wrong palette. No stored
+        choice means no class, which leaves prefers-color-scheme in charge. */}
+    <script is:inline>
+      try {
+        const t = localStorage.getItem('theme');
+        if (t === 'dark' || t === 'light') document.documentElement.classList.add(t);
+      } catch (e) {
+        /* private mode — fall back to the OS preference */
+      }
+    </script>
   </head>
   <body>
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-[8px] focus:bg-primary focus:px-4 focus:py-2 focus:text-white"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-[8px] focus:bg-accent focus:px-4 focus:py-2 focus:text-white"
     >
       Skip to content
     </a>
