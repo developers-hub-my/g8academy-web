@@ -20,15 +20,27 @@ const plans = [
     name: 'Annual',
     price: 'RM 349',
     period: '/year',
-    blurb: 'All-access video, plus two assessment attempts.',
+    blurb: 'All-access video for a year.',
     features: [
       'Everything in Monthly',
-      '2 assessment attempts included',
-      'Credential on pass, at no extra cost',
       '25% below the monthly rate',
+      'Assessment attempts sold separately',
     ],
     cta: 'Start annual',
     featured: true,
+  },
+  {
+    name: 'Lifetime',
+    price: 'RM 1,745',
+    period: 'once',
+    blurb: 'All-access video, permanently.',
+    features: [
+      'Everything in Annual',
+      'One payment, no renewal',
+      'Assessment attempts sold separately',
+    ],
+    cta: 'Buy lifetime',
+    featured: false,
   },
   {
     name: 'Per credential',
@@ -50,9 +62,9 @@ const plans = [
   id="pricing"
   eyebrow="Pricing"
   title="Learning and proof are priced separately"
-  lede="A subscription buys access to the video. The assessment and the credential are what an employer actually checks, so they are bought deliberately — on their own, or bundled into an annual plan."
+  lede="A subscription buys access to the video. The assessment and the credential are what an employer actually checks, so they are bought on their own — no subscription includes an assessment."
 >
-  <div class="grid gap-6 lg:grid-cols-3">
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
     {plans.map((p) => (
       <div
         class={`flex flex-col rounded-[12px] border bg-surface p-7 ${
