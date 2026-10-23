@@ -70,6 +70,8 @@ export const steps = [
   {
     n: '01',
     title: 'Learn',
+    photo: '/images/landing/step-learn.jpg',
+    photoAlt: 'Headphones resting beside an open laptop, ready for a lesson',
     bar: 'bg-l1',
     body: 'Watch a series of short, focused episodes built around one real system, not a slide deck. 4 to 12 hours, not a semester.',
     points: ['Captions and playback speed', 'Resume where you stopped', 'Code and config for every episode'],
@@ -77,6 +79,8 @@ export const steps = [
   {
     n: '02',
     title: 'Prove',
+    photo: '/images/landing/step-prove.jpg',
+    photoAlt: 'Hands typing on a laptop keyboard',
     bar: 'bg-l2',
     body: 'Take the assessment for that series: a timed quiz, every question mapped to a stated learning outcome. Architect adds a practical task marked against a published rubric.',
     points: ['Pass mark 70%', 'A per-outcome breakdown of your result', '2 attempts with a credential, extra attempts RM 49'],
@@ -84,6 +88,8 @@ export const steps = [
   {
     n: '03',
     title: 'Show',
+    photo: '/images/landing/step-show.jpg',
+    photoAlt: 'A candidate and an interviewer shaking hands across a desk',
     bar: 'bg-l3',
     body: 'Pass and a signed Open Badge 3.0 is issued within a minute, with its own public page, ready for your CV, LinkedIn or a client proposal.',
     points: ['Public verify link, no account needed', 'Bound to the series version you passed', 'Add to LinkedIn in one step'],

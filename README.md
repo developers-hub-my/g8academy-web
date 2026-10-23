@@ -56,6 +56,13 @@ Landing photos live in `public/images/landing/` and are used under the [Unsplash
 | `series-gateway.jpg` | [unsplash.com/photos/VHmBX7FnXw0](https://unsplash.com/photos/VHmBX7FnXw0) | [Domaintechnik](https://unsplash.com/@fslfsl) |
 | `series-architecture.jpg` | [unsplash.com/photos/26MJGnCM0Wc](https://unsplash.com/photos/26MJGnCM0Wc) | [Kaleidico](https://unsplash.com/@kaleidico) |
 | `teams.jpg` | [unsplash.com/photos/QckxruozjRg](https://unsplash.com/photos/QckxruozjRg) | [Annie Spratt](https://unsplash.com/@anniespratt) |
+| `hero.jpg` | [unsplash.com/photos/fdGTi4IcaJc](https://unsplash.com/photos/fdGTi4IcaJc) | [Abu Saeid](https://unsplash.com/@abusaeid01) |
+| `step-learn.jpg` | [unsplash.com/photos/FnR2U1lXsBQ](https://unsplash.com/photos/FnR2U1lXsBQ) | [Dan Farrell](https://unsplash.com/@farreal) |
+| `step-prove.jpg` | [unsplash.com/photos/vZJdYl5JVXY](https://unsplash.com/photos/vZJdYl5JVXY) | [Kaitlyn Baker](https://unsplash.com/@kaitlynbaker) |
+| `step-show.jpg` | [unsplash.com/photos/jEpZNyFSQwQ](https://unsplash.com/photos/jEpZNyFSQwQ) | [Vitaly Gariev](https://unsplash.com/@silverkblack) |
+| `workshop.jpg` | [unsplash.com/photos/vBg0dxwfIYM](https://unsplash.com/photos/vBg0dxwfIYM) | [Vitaly Gariev](https://unsplash.com/@silverkblack) |
+| `credentials.jpg` | [unsplash.com/photos/9si2noVCVH8](https://unsplash.com/photos/9si2noVCVH8) | [Resume Genius](https://unsplash.com/@resumegenius) |
+| `cta.jpg` | [unsplash.com/photos/4mHaSX8zvJI](https://unsplash.com/photos/4mHaSX8zvJI) | [Jannis Brandt](https://unsplash.com/@jannisbrandt) |
 
 ---
 

@@ -9,7 +9,10 @@ const eps = [
 const practitioner = levels[1];
 ---
 <section class="on-midnight relative overflow-hidden bg-midnight text-white" aria-labelledby="hero-heading">
-  <div class="container-page flex flex-wrap items-center gap-14 pt-16 pb-20 md:pt-[88px] md:pb-[104px]">
+  {/* Photo: Abu Saeid on Unsplash (credits in README.md). Heavily tinted so copy and illustration stay crisp. */}
+  <img src="/images/landing/hero.jpg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" width="1600" height="900" class="absolute inset-0 h-full w-full object-cover" />
+  <span class="absolute inset-0 bg-gradient-to-r from-midnight/95 via-midnight/90 to-midnight/80" aria-hidden="true"></span>
+  <div class="container-page relative flex flex-wrap items-center gap-14 pt-16 pb-20 md:pt-[88px] md:pb-[104px]">
     <div class="flex min-w-0 flex-[1_1_520px] flex-col gap-7">
       <p class="flex items-center gap-3 text-[13px] font-semibold tracking-[0.1em] text-mist uppercase">
         <span aria-hidden="true" class="flex h-[3px] w-12 overflow-hidden rounded-[2px]">
@@ -101,11 +104,14 @@ const practitioner = levels[1];
 {/* Proof strip */}
 <section class="border-b border-line bg-surface" aria-label="About the trainers">
   <div class="container-page flex flex-wrap items-center justify-between gap-8 py-9">
-    <p class="max-w-[36em] flex-[1_1_380px] text-[16px] leading-relaxed text-muted">
+    <div class="flex min-w-0 flex-[1_1_380px] flex-wrap items-center gap-6">
+    <img src="/images/landing/workshop.jpg" alt="An instructor leading a hands-on training class" loading="lazy" decoding="async" width="1000" height="750" class="aspect-[4/3] w-full flex-none rounded-[14px] object-cover sm:w-[200px]" />
+    <p class="max-w-[36em] min-w-0 flex-[1_1_260px] text-[16px] leading-relaxed text-muted">
       Taught by <b class="text-navy">Developers Hub</b>, the {site.location.split(',')[0]} team behind
       enterprise Laravel, API gateway and identity projects for government, universities and
       enterprises.
     </p>
+    </div>
     <dl class="flex flex-wrap gap-x-12 gap-y-6">
       {[
         ['2015', 'training developers since'],
