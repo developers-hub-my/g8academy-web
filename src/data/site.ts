@@ -11,7 +11,7 @@ export const site = {
   // public, so this value can never change once a credential has been issued.
   url: 'https://academy.devhub.my',
   app: 'https://academy.devhub.my',
-  email: 'academy@devhub.my',
+  email: 'hello@devhub.my',
 } as const;
 
 export type Level = {

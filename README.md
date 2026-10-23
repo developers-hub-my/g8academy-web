@@ -43,6 +43,20 @@ Tailwind v4 does **not** support `@theme` nested inside `@media` — doing so si
 
 Copy, levels, pricing and FAQ live in `src/data/site.ts`. Sections are in `src/components/sections/` and composed in `src/pages/index.astro`.
 
+## Photo credits
+
+Landing photos live in `public/images/landing/` and are used under the [Unsplash License](https://unsplash.com/license).
+
+| File | Photo | Photographer |
+|---|---|---|
+| `series-docker.jpg` | [unsplash.com/photos/3jtEN0ZxT4Y](https://unsplash.com/photos/3jtEN0ZxT4Y) | [Bernd Dittrich](https://unsplash.com/@hdbernd) |
+| `series-laravel.jpg` | [unsplash.com/photos/OqtafYT5kTw](https://unsplash.com/photos/OqtafYT5kTw) | [Ilya Pavlov](https://unsplash.com/@ilyapavlov) |
+| `series-api.jpg` | [unsplash.com/photos/ieic5Tq8YMk](https://unsplash.com/photos/ieic5Tq8YMk) | [Chris Ried](https://unsplash.com/@cdr6934) |
+| `series-identity.jpg` | [unsplash.com/photos/mT7lXZPjk7U](https://unsplash.com/photos/mT7lXZPjk7U) | [FlyD](https://unsplash.com/@flyd2069) |
+| `series-gateway.jpg` | [unsplash.com/photos/VHmBX7FnXw0](https://unsplash.com/photos/VHmBX7FnXw0) | [Domaintechnik](https://unsplash.com/@fslfsl) |
+| `series-architecture.jpg` | [unsplash.com/photos/26MJGnCM0Wc](https://unsplash.com/photos/26MJGnCM0Wc) | [Kaleidico](https://unsplash.com/@kaleidico) |
+| `teams.jpg` | [unsplash.com/photos/QckxruozjRg](https://unsplash.com/photos/QckxruozjRg) | [Annie Spratt](https://unsplash.com/@anniespratt) |
+
 ---
 
 *Developers Hub Sdn Bhd · devhub.my*

@@ -54,6 +54,9 @@ const year = new Date().getFullYear();
     </nav>
   </div>
   <div class="container-page border-t border-midnight-line py-6 text-[13px] text-mist">
-    <p>&copy; {year} {site.company}. All rights reserved.</p>
+    <p class="flex flex-wrap justify-between gap-x-6 gap-y-2">
+      <span>&copy; {year} {site.company}. All rights reserved.</span>
+      <a href="https://unsplash.com/?utm_source=devhub_academy&utm_medium=referral" class="transition-colors duration-200 hover:text-white">Photos from Unsplash</a>
+    </p>
   </div>
 </footer>
