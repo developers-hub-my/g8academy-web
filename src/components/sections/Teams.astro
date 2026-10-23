@@ -1,0 +1,84 @@
+---
+import { site } from '../../data/site';
+
+const features = [
+  { t: 'Single sign-on', d: 'Your team signs in with your identity provider.' },
+  { t: 'Seats and invites', d: 'Add, move and free up seats as people change.' },
+  { t: 'Cohort progress', d: 'See who is on track, behind or ready to sit the assessment.' },
+  { t: 'Credential report', d: 'Export who passed what, for HR or your client.' },
+];
+const cohort = [
+  { initial: 'A', name: 'Aisyah R.', avatar: 'bg-[#155dfc]', pct: '100%', bar: 'bg-verified', status: 'Credentialed', tone: 'text-verified' },
+  { initial: 'D', name: 'Daniel T.', avatar: 'bg-[#615fff]', pct: '82%', bar: 'bg-l2', status: 'Ready to sit', tone: 'text-tint-fg' },
+  { initial: 'H', name: 'Hafiz M.', avatar: 'bg-midnight', pct: '46%', bar: 'bg-l2', status: 'On track', tone: 'text-muted' },
+  { initial: 'P', name: 'Priya K.', avatar: 'bg-[#64748b]', pct: '12%', bar: 'bg-expired', status: 'Behind', tone: 'text-expired' },
+];
+const stats = [
+  ['Seats used', '18 / 25'],
+  ['Avg. progress', '64%'],
+  ['Credentials', '7'],
+];
+---
+<section id="teams" class="section-y scroll-mt-20 bg-page" aria-labelledby="teams-heading">
+  <div class="container-page flex flex-wrap items-center gap-14">
+    <div class="flex min-w-0 flex-[1_1_440px] flex-col gap-5 lg:order-2">
+      <p class="eyebrow">For teams</p>
+      <h2 id="teams-heading" class="h-display text-navy">Train a cohort. See who’s ready.</h2>
+      <p class="text-[17px] leading-relaxed text-muted">
+        Buy seats for your team, assign series, and track progress through to credentials. Built for
+        IT departments, universities and agencies upskilling developers in a set window.
+      </p>
+      <ul class="grid gap-3.5 sm:grid-cols-2">
+        {features.map((f) => (
+          <li class="flex flex-col gap-1.5 rounded-[14px] border border-line bg-surface p-[18px]">
+            <b class="text-[15px] text-navy">{f.t}</b>
+            <span class="text-[14px] leading-normal text-muted">{f.d}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="flex flex-wrap gap-3 pt-1">
+        <a href={`mailto:${site.email}?subject=DevHub%20Academy%20cohort`} class="rounded-[12px] bg-navy px-6 py-4 text-[16px] font-bold text-page transition-opacity duration-200 hover:opacity-90">
+          Talk to us about a cohort
+        </a>
+        <a href="#pricing" class="rounded-[12px] border border-line-strong px-6 py-4 text-[16px] font-semibold text-navy transition-colors duration-200 hover:border-navy">
+          See team pricing
+        </a>
+      </div>
+    </div>
+
+    <figure class="min-w-0 flex-[1_1_480px] lg:order-1">
+      <figcaption class="sr-only">Example cohort dashboard (illustrative data)</figcaption>
+      <div class="flex flex-col gap-[18px] rounded-[18px] border border-line bg-surface p-5 shadow-[0_30px_60px_rgba(15,16,45,.10)] sm:p-6">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <p class="text-[12px] text-muted">Cohort</p>
+            <p class="text-[18px] font-extrabold tracking-[-0.02em] text-navy">API Platform Team · Q1 intake</p>
+          </div>
+          <span class="rounded-full bg-tint px-2.5 py-1.5 text-[12px] font-bold text-tint-fg">SSO · Keycloak</span>
+        </div>
+        <dl class="grid grid-cols-3 gap-2 sm:gap-3">
+          {stats.map(([k, v]) => (
+            <div class="flex flex-col-reverse rounded-[12px] bg-page p-3 sm:p-3.5">
+              <dt class="text-[12px] text-muted">{k}</dt>
+              <dd class="text-[20px] font-extrabold text-navy sm:text-[22px]">{v}</dd>
+            </div>
+          ))}
+        </dl>
+        <ul>
+          {cohort.map((c) => (
+            <li class="flex items-center gap-3 border-t border-line py-3 sm:gap-3.5">
+              <span class:list={['flex h-[34px] w-[34px] flex-none items-center justify-center rounded-full text-[13px] font-bold text-white', c.avatar]} aria-hidden="true">{c.initial}</span>
+              <span class="min-w-0 flex-[0_1_120px] truncate text-[14px] font-semibold text-navy">{c.name}</span>
+              <span class="h-2 flex-1 overflow-hidden rounded-[4px] bg-surface-2" aria-hidden="true">
+                <span class:list={['block h-2 rounded-[4px]', c.bar]} style={`width:${c.pct}`}></span>
+              </span>
+              <span class:list={['w-[92px] flex-none text-right text-[12px] font-semibold', c.tone]}>
+                <span class="sr-only">{c.pct} watched, </span>{c.status}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </figure>
+  </div>
+</section>

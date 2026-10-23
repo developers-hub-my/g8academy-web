@@ -1,72 +1,122 @@
 ---
-import VerifyCard from '../VerifyCard.astro';
-import { site } from '../../data/site';
+import { levels, site } from '../../data/site';
+
+const eps = [
+  { n: 3, title: 'Authenticating consumers', state: 'done', row: '', dot: 'bg-midnight-line text-mist', fg: 'text-mist' },
+  { n: 4, title: 'Rate limiting at the gateway', state: 'playing', row: 'bg-[#1e2047]', dot: 'bg-coral text-midnight', fg: 'text-white' },
+  { n: 5, title: 'Logging and tracing requests', state: 'next', row: '', dot: 'bg-midnight-line text-midnight-ink', fg: 'text-midnight-ink' },
+];
+const practitioner = levels[1];
 ---
-<section class="relative overflow-hidden border-b border-line bg-surface">
-  <div
-    class="pointer-events-none absolute inset-0 opacity-[0.35]"
-    aria-hidden="true"
-    style="background-image:linear-gradient(to right,var(--color-line) 1px,transparent 1px),linear-gradient(to bottom,var(--color-line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 40%,transparent 100%)"
-  >
-  </div>
-
-  <div class="container-page relative grid gap-14 py-16 md:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-20">
-    <div>
-      <p
-        class="inline-flex items-center gap-2 rounded-full border border-line bg-tint px-3 py-1.5 font-mono text-[12px] tracking-wide text-primary"
-      >
-        Micro-credentials for developers · Malaysia
+<section class="on-midnight relative overflow-hidden bg-midnight text-white" aria-labelledby="hero-heading">
+  <div class="container-page flex flex-wrap items-center gap-14 pt-16 pb-20 md:pt-[88px] md:pb-[104px]">
+    <div class="flex min-w-0 flex-[1_1_520px] flex-col gap-7">
+      <p class="flex items-center gap-3 text-[13px] font-semibold tracking-[0.1em] text-mist uppercase">
+        <span aria-hidden="true" class="flex h-[3px] w-12 overflow-hidden rounded-[2px]">
+          <i class="flex-1 bg-[#155dfc]"></i><i class="flex-1 bg-[#615fff]"></i><i class="flex-1 bg-coral"></i>
+        </span>
+        Micro-credentials by Developers Hub
       </p>
-
-      <h1 class="mt-6 font-display text-[40px] leading-[1.05] font-semibold tracking-tight text-navy md:text-[56px]">
-        Learn it.<br />Prove it.
+      <h1 id="hero-heading" class="font-display text-[clamp(48px,7vw,88px)] leading-[0.98] font-extrabold tracking-[-0.045em] text-balance">
+        Learn it.<br />Prove it.<br /><span class="text-coral">Show it.</span>
       </h1>
-
-      <p class="mt-6 max-w-xl text-[17px] leading-relaxed text-muted">
-        Short, practitioner-led series — 4 to 12 hours on one competency. Every one ends in a
-        graded assessment and a <strong class="font-semibold text-ink">signed credential an
-        employer can verify at a public URL</strong>, without an account and without taking your
-        word for it.
+      <p class="max-w-[34em] text-[17px] leading-relaxed text-midnight-ink sm:text-[19px]">
+        Short video series on the stack production teams actually run: Laravel, APIs, identity and
+        containers. Pass the assessment and earn a signed credential anyone can verify.
       </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="#series" class="rounded-[12px] bg-coral px-6 py-4 text-[16px] font-bold text-midnight transition-opacity duration-200 hover:opacity-90">Browse the series</a>
+        <a href="#teams" class="rounded-[12px] border border-[#3b3e6b] px-6 py-4 text-[16px] font-semibold text-white transition-colors duration-200 hover:border-mist">Training a team?</a>
+      </div>
+      <ul class="flex flex-wrap gap-x-[22px] gap-y-3 pt-2" aria-label="Credential levels">
+        {levels.map((l) => (
+          <li class="flex items-center gap-2.5">
+            <img src={l.mark} alt="" class="h-[22px] w-auto" width="12" height="22" />
+            <span class="text-[14px] font-semibold text-[#e4e5f3]">{l.name}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
 
-      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-        <a
-          href="#catalogue"
-          class="cursor-pointer rounded-[8px] bg-accent px-6 py-3.5 text-center text-[15px] font-semibold text-white transition-opacity duration-200 hover:opacity-90"
-        >
-          Browse the catalogue
-        </a>
-        <a
-          href="#verify"
-          class="cursor-pointer rounded-[8px] border border-line bg-surface px-6 py-3.5 text-center text-[15px] font-semibold text-navy transition-colors duration-200 hover:border-primary hover:text-primary"
-        >
-          See how verification works
-        </a>
+    {/* Illustration: the player, with the credential it leads to. */}
+    <div class="relative min-w-0 flex-[1_1_460px] pb-[150px]" role="img" aria-label="A series episode playing, and the Practitioner credential earned from it, marked Verified">
+      <div class="overflow-hidden rounded-[18px] border border-midnight-line bg-midnight-2 shadow-[0_40px_80px_rgba(0,0,0,.35)]" aria-hidden="true">
+        <div class="relative flex aspect-video items-center justify-center bg-[#0a0b22]">
+          <div class="absolute top-[22px] left-6 font-mono text-[12px] leading-normal text-[#6b6e99]">
+            <div><span class="text-coral">location</span> /api/ &#123;</div>
+            <div>&nbsp;&nbsp;limit_req zone=api burst=20;</div>
+            <div class="hidden sm:block">&nbsp;&nbsp;proxy_pass http://kong:8000;</div>
+            <div>&#125;</div>
+          </div>
+          <span class="flex h-[72px] w-[72px] items-center justify-center rounded-full bg-coral shadow-[0_10px_30px_rgba(255,99,126,.35)]">
+            <svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#0F102D" /></svg>
+          </span>
+          <div class="absolute inset-x-0 bottom-0 h-1 bg-midnight-line"><div class="h-1 w-[38%] bg-coral"></div></div>
+        </div>
+        <div class="flex flex-col gap-3.5 px-5 pt-[18px] pb-5">
+          <div class="flex flex-wrap items-baseline justify-between gap-3">
+            <div>
+              <div class="text-[12px] font-semibold tracking-[0.06em] text-mist uppercase">API Design, Security &amp; Operations</div>
+              <div class="mt-1 text-[18px] font-bold">Ep 4 · Rate limiting at the gateway</div>
+            </div>
+            <span class="font-mono text-[12px] text-mist">Practitioner</span>
+          </div>
+          <div class="flex flex-col gap-0.5">
+            {eps.map((e) => (
+              <div class:list={['flex items-center gap-3 rounded-[8px] px-2.5 py-[9px] text-[14px]', e.row]}>
+                <span class:list={['flex h-[22px] w-[22px] flex-none items-center justify-center rounded-full text-[11px] font-semibold', e.dot]}>{e.n}</span>
+                <span class:list={['min-w-0 flex-1', e.fg]}>{e.title}</span>
+                <span class="font-mono text-[11px] text-[#8b8eb8]">{e.state}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
-      <dl class="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-line pt-8">
-        {[
-          ['2 episodes', 'free, no account'],
-          ['70%', 'pass mark, every channel'],
-          ['< 60 s', 'to credential on pass'],
-        ].map(([stat, label]) => (
-          <div>
-            <dt class="text-[19px] font-bold text-navy">{stat}</dt>
-            <dd class="mt-1 text-[13px] leading-snug text-muted">{label}</dd>
+      <div class="absolute bottom-0 left-0 flex w-[min(330px,92%)] flex-col gap-3.5 rounded-[16px] bg-white p-5 text-midnight shadow-[0_30px_60px_rgba(0,0,0,.4)] sm:-left-7" aria-hidden="true">
+        <div class="flex items-center justify-between gap-2.5">
+          <span class="text-[11px] font-bold tracking-[0.08em] text-[#5b6178] uppercase">Credential</span>
+          <span class="flex items-center gap-1.5 rounded-full bg-[#e7f6ee] px-[9px] py-[5px] text-[12px] font-bold text-[#0b6b3a]">
+            <svg width="12" height="12" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#0B6B3A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            Verified
+          </span>
+        </div>
+        <div class="flex items-center gap-3.5">
+          <span class="flex h-[52px] w-[52px] flex-none items-center justify-center rounded-[12px] bg-midnight">
+            <img src={practitioner.mark} alt="" class="h-[26px] w-auto" width="14" height="26" />
+          </span>
+          <div class="min-w-0">
+            <div class="text-[20px] font-extrabold tracking-[-0.02em]">Practitioner</div>
+            <div class="text-[13px] text-[#5b6178]">API Design, Security &amp; Operations</div>
           </div>
-        ))}
-      </dl>
+        </div>
+        <div class="flex justify-between gap-2.5 border-t border-[#e1e4ee] pt-3 font-mono text-[12px] leading-snug text-[#5b6178]">
+          <span>Nur Aisyah binti Rahman</span><span>9f2c4b71</span>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="lg:pl-4">
-      <p class="mb-3 font-mono text-[12px] tracking-wide text-muted">
-        {site.url.replace('https://', '')}/verify/9f2c4b71
-      </p>
-      <VerifyCard status="verified" />
-      <p class="mt-4 text-[13px] leading-relaxed text-muted">
-        This is what a hiring manager sees. One link, no login, and the signature is checked
-        against the issuer&rsquo;s published key — not looked up in a database they have to trust.
-      </p>
-    </div>
+{/* Proof strip */}
+<section class="border-b border-line bg-surface" aria-label="About the trainers">
+  <div class="container-page flex flex-wrap items-center justify-between gap-8 py-9">
+    <p class="max-w-[36em] flex-[1_1_380px] text-[16px] leading-relaxed text-muted">
+      Taught by <b class="text-navy">Developers Hub</b>, the {site.location.split(',')[0]} team behind
+      enterprise Laravel, API gateway and identity projects for government, universities and
+      enterprises.
+    </p>
+    <dl class="flex flex-wrap gap-x-12 gap-y-6">
+      {[
+        ['2015', 'training developers since'],
+        ['56+', 'training sessions delivered'],
+        ['20+', 'open-source Laravel packages'],
+      ].map(([v, k]) => (
+        <div class="flex flex-col-reverse">
+          <dt class="text-[13px] text-muted">{k}</dt>
+          <dd class="text-[30px] font-extrabold tracking-[-0.03em] text-navy">{v}</dd>
+        </div>
+      ))}
+    </dl>
   </div>
 </section>

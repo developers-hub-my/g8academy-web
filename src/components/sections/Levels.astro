@@ -1,51 +1,32 @@
 ---
-import Section from '../Section.astro';
 import { levels } from '../../data/site';
 ---
-<Section
-  id="levels"
-  eyebrow="Level taxonomy"
-  title="Four levels, each with a stated prerequisite"
-  lede="The level sets what is assumed of you going in, the notional hours, and whether a practical assessment is required. Credential price follows the level, not the series."
->
-  <div class="overflow-x-auto rounded-[12px] border border-line">
-    <table class="w-full min-w-[46rem] border-collapse text-left">
-      <caption class="sr-only">G8Academy credential levels, prerequisites, hours and price</caption>
-      <thead>
-        <tr class="border-b border-line bg-surface-2">
-          <th scope="col" class="px-5 py-3.5 text-[13px] font-semibold text-navy">Level</th>
-          <th scope="col" class="px-5 py-3.5 text-[13px] font-semibold text-navy">Assumed of you</th>
-          <th scope="col" class="px-5 py-3.5 text-[13px] font-semibold text-navy">Hours</th>
-          <th scope="col" class="px-5 py-3.5 text-[13px] font-semibold text-navy">Assessment</th>
-          <th scope="col" class="px-5 py-3.5 text-right text-[13px] font-semibold text-navy">
-            Credential
-          </th>
-        </tr>
-      </thead>
-      <tbody class="divide-y divide-line bg-surface">
-        {levels.map((l) => (
-          <tr>
-            <th scope="row" class="px-5 py-4">
-              <span
-                class="inline-block rounded-full bg-tint px-2.5 py-1 text-[13px] font-semibold text-primary"
-              >
-                {l.name}
-              </span>
-            </th>
-            <td class="px-5 py-4 text-[14px] text-muted">{l.prerequisite}</td>
-            <td class="px-5 py-4 font-mono text-[13px] text-muted">{l.hours}</td>
-            <td class="px-5 py-4 text-[14px] text-muted">
-              {l.practical ? 'Quiz + practical' : 'Timed quiz'}
-            </td>
-            <td class="px-5 py-4 text-right font-mono text-[14px] font-medium text-ink">
-              RM {l.price}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+<section id="levels" class="on-midnight section-y scroll-mt-20 bg-midnight text-white" aria-labelledby="levels-heading">
+  <div class="container-page">
+    <header class="mb-12 max-w-[720px]">
+      <p class="eyebrow text-mist">Three levels</p>
+      <h2 id="levels-heading" class="h-display mt-3">The bars in our logo are the path.</h2>
+      <p class="mt-[18px] text-[17px] leading-relaxed text-midnight-ink">
+        Each credential lights another bar. Earn all three and you hold the full mark.
+      </p>
+    </header>
+    <ul class="grid gap-5 md:grid-cols-3">
+      {levels.map((l) => (
+        <li class="flex flex-col gap-[18px] rounded-[18px] border border-midnight-line bg-midnight-2 p-7 sm:p-8">
+          <img src={l.mark} alt="" class="h-16 w-auto self-start" width="34" height="64" />
+          <div>
+            <p class="font-mono text-[12px] text-mist">Level {l.n}</p>
+            <h3 class="mt-2 text-[28px] font-extrabold tracking-[-0.03em]">{l.name}</h3>
+          </div>
+          <p class="text-[18px] leading-snug font-semibold">{l.claim}</p>
+          <p class="text-[15px] leading-relaxed text-mist">{l.body}</p>
+          <dl class="mt-auto grid grid-cols-3 gap-2 border-t border-midnight-line pt-4 font-mono text-[12px]">
+            <div><dt class="text-mist">Hours</dt><dd class="mt-1 text-white">{l.hours}</dd></div>
+            <div><dt class="text-mist">Assessed</dt><dd class="mt-1 text-white">{l.assessment}</dd></div>
+            <div><dt class="text-mist">Credential</dt><dd class="mt-1 text-white">RM {l.price}</dd></div>
+          </dl>
+        </li>
+      ))}
+    </ul>
   </div>
-  <p class="mt-4 text-[13px] text-muted">
-    Pathways stack several series into a single higher-order credential. Prices exclude SST.
-  </p>
-</Section>
+</section>

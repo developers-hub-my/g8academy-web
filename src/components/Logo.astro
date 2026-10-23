@@ -1,17 +1,27 @@
 ---
-import BrandMark from './BrandMark.astro';
+/**
+ * DevHub Academy lockups, inlined verbatim from the brand kit (text is
+ * outlined, so no font is needed and the wordmark is never retyped). Each SVG
+ * carries its own role="img" + <title>, so it names itself.
+ *
+ *   tone="reverse" — midnight and dark grounds (header, footer)
+ *   tone="colour"  — white / light grounds
+ */
+import horizontalColour from '../assets/brand/devhub-academy_horizontal_colour.svg?raw';
+import horizontalReverse from '../assets/brand/devhub-academy_horizontal_colour-reverse.svg?raw';
+import stackedEndorsedReverse from '../assets/brand/devhub-academy_stacked-endorsed_colour-reverse.svg?raw';
 
 interface Props {
+  variant?: 'horizontal' | 'stacked-endorsed';
+  tone?: 'reverse' | 'colour';
   class?: string;
-  /** Wordmark + tagline stack, as in the application sidebar. Off by default. */
-  tagline?: boolean;
 }
-const { class: cls = '', tagline = false } = Astro.props;
+const { variant = 'horizontal', tone = 'reverse', class: cls = 'h-[26px]' } = Astro.props;
+const svg =
+  variant === 'stacked-endorsed'
+    ? stackedEndorsedReverse
+    : tone === 'colour'
+      ? horizontalColour
+      : horizontalReverse;
 ---
-<span class:list={['inline-flex items-center gap-2.5', cls]}>
-  <BrandMark class="h-8 w-8" />
-  <span class="flex flex-col leading-none">
-    <span class="text-[17px] font-bold tracking-tight text-navy">G8Academy</span>
-    {tagline && <span class="mt-1 text-[11px] text-muted">Learn it. Prove it.</span>}
-  </span>
-</span>
+<span class:list={['block [&>svg]:h-full [&>svg]:w-auto', cls]} set:html={svg} />
