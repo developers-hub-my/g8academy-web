@@ -301,14 +301,21 @@ No. Only the partner's own issuer admin can approve, from their console. That is
 
 ## Set up an organisation and its seats
 
-**Why:** an employer or university gets an organisation console only once you create it here.
+**Why:** an employer or university gets an Organisation console only once you create it here, and its seats only once a seat pack is paid.
 
-1. Go to **Academy → Organisations** and click **New organisation**. Enter the **Name**, its verified email **Domain** (one per organisation) and, if you have it, the **Registration number**.
-2. Under **Org admins**, add the person who will run it by the email of their existing account. They get the Org Admin role and see the **Organisation** console.
-3. To sell seats, click **Record seat pack**, enter the number of seats and the price, and choose which org admin it is invoiced to. The order waits as unpaid.
-4. When their payment arrives, confirm it in **Academy → Orders & invoices**. The seats are added to the organisation's pool and the internal invoice is issued.
+1. Go to **Academy → Organisations** and click **Add organisation**.
+2. Enter the **Name**, the **Verified email domain** (one per organisation; single sign-on and domain sign-in trust it, so two organisations can never share one) and, optionally, the **Registration number** printed on its invoices. Click **Create organisation**.
 
-A pathway credential template is created the same way as a series one: in **Credential templates**, choose **Attests: pathway** and pick the published pathway.
+![The Organisations list: one organisation with its verified domain, admins, seats and seat-pack status, and the Add organisation button](/docs/screens/academy-admin.organisations.png)
+
+3. Open it from the **⋯** menu with **Manage organisation**.
+4. Under **Administrators**, type the **Email of an existing account** and click **Attach admin**. That person gets the Org Admin role and the **Organisation** console. Nothing else opens it.
+5. Under **Seat packs**, choose the **Seat pack** product, who it is **Invoice to** (one of the organisation's admins), the number of **Seats** (at least 20), an optional **Negotiated price per seat (RM)** and **PO reference**, then click **Record seat-pack order**. The order shows as **Awaiting payment**.
+6. When the payment arrives, confirm it in **Academy → Orders & refunds**. The seats are added to the organisation's pool and the internal invoice is issued.
+
+![Manage organisation: details, one attached administrator, and the seat-pack order form](/docs/screens/admin-manage-organisation.png)
+
+A pathway credential template is made the same way as a series one: in **Credential templates**, choose to attest a pathway and pick the published pathway.
 
 ## What's not available yet
 
