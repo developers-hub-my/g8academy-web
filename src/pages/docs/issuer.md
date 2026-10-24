@@ -133,5 +133,4 @@ You can't yet. The console opens the first issuer you are attached to, in alphab
 
 | Not in the app | What to do |
 | --- | --- |
-| Switching between issuers in one account | Use a separate account for each issuer |
 | Editing your issuer's legal name or logo from your console | The academy admin changes it in **Academy → Issuers** |

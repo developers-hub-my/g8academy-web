@@ -101,7 +101,7 @@ On each episode row you can:
 
 1. Open the **Captions** tab (or **...** > **Captions & chapters** on an episode).
 2. Pick the episode in **Episode** and the **Language**. The list shows each episode's state: no captions, to review, or approved.
-3. Paste the caption file into the **WebVTT** box. It must start with `WEBVTT`, followed by timed cues. If your video provider already has captions, click **Fetch from the video provider** to load them instead.
+3. Paste the caption file into the **WebVTT** box, or upload a `.vtt` or `.srt` file (up to 512 KB; SRT is converted to WebVTT for you). It must start with `WEBVTT`, followed by timed cues. If your video provider already has captions, click **Fetch from the video provider** to load them instead.
 4. Read and correct the text.
 5. Click **Approve and publish**. Use **Save draft** if you want to come back to it later.
 
@@ -210,6 +210,8 @@ For anything else:
 2. Under **Start a new version**, check the **Version label**. It suggests the next minor version (for example **1.1**). Labels are written as major.minor.
 3. Click **Start draft** and confirm.
 
+Changed your mind about a draft? Click **Discard draft** on **Versions** (or on the draft banner in the editor) and confirm. Only an unpublished draft can be discarded, and its episodes, assessment and rubric go with it. The live version is untouched.
+
 ![The Versions tab for API & Integration: what is copied forward and what is not, the version label 1.1 with Start draft, and the history showing v1.0 as Current with 0 credentials](/docs/screens/instructor.versions.png)
 
 **What you should see:** "Draft 1.1 created from 1.0." The draft starts as a copy of the live version.
@@ -277,6 +279,4 @@ An assessor, not you. An academy admin assigns each submission to an assessor. S
 
 - **Video links.** Every episode's video must be uploaded as a file. You cannot paste a YouTube or other video URL.
 - **Typing questions in a form.** Questions are only added by importing Markdown on the **Assessment** tab.
-- **Uploading a caption file.** Paste the WebVTT text into the box, or fetch it from the video provider.
 - **Automatic captions.** Captions are never generated for you.
-- **Discarding a draft version.** Once you start a draft, the only way forward is to finish and publish it.

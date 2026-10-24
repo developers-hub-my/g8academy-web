@@ -239,4 +239,3 @@ By design. A subscription buys watching. The assessment and the credential are a
 
 | Missing | Workaround |
 | --- | --- |
-| Creating an organisation and attaching its Org Admin from the app | Your developer sets it up |

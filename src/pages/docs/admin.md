@@ -299,9 +299,18 @@ No. A refund always issues a credit note, and issued documents never change.
 **Can I approve a partner's template for them?**
 No. Only the partner's own issuer admin can approve, from their console. That is the promise made to the partner.
 
+## Set up an organisation and its seats
+
+**Why:** an employer or university gets an organisation console only once you create it here.
+
+1. Go to **Academy → Organisations** and click **New organisation**. Enter the **Name**, its verified email **Domain** (one per organisation) and, if you have it, the **Registration number**.
+2. Under **Org admins**, add the person who will run it by the email of their existing account. They get the Org Admin role and see the **Organisation** console.
+3. To sell seats, click **Record seat pack**, enter the number of seats and the price, and choose which org admin it is invoiced to. The order waits as unpaid.
+4. When their payment arrives, confirm it in **Academy → Orders & invoices**. The seats are added to the organisation's pool and the internal invoice is issued.
+
+A pathway credential template is created the same way as a series one: in **Credential templates**, choose **Attests: pathway** and pick the published pathway.
+
 ## What's not available yet
 
 | Not in the app | What to do |
 | --- | --- |
-| Creating a pathway credential template | Pathway templates are listed but cannot be created or edited from **Credential templates** yet. |
-| Creating an organisation | Your developer sets it up. |

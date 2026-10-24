@@ -40,7 +40,7 @@ Each row shows:
 
 | Column | What it tells you |
 |---|---|
-| **Candidate** | The learner, and which attempt this is (for example **Attempt 1 of 3**), or **Capstone proposal** |
+| **Candidate** | The learner, and which attempt this is (for example **Attempt 1 of 2**; the limit is the candidate's own: 2 for a credential purchase, 3 with an add-on or an organisation seat), or **Capstone proposal** |
 | **Certificate · item** | The series, the item type, and the series version they sat |
 | **Handed in** | The date, and how many working days ago |
 | **Target** | Days left, **Due today**, or **Overdue** with the date it was due |

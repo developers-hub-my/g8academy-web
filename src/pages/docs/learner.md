@@ -141,7 +141,7 @@ After you sign in you land on **Dashboard**. It shows **Continue watching** (one
 For the full picture, click **My learning** in the sidebar. It shows:
 
 - **Continue watching**: the last episode you played, with **Resume at …**.
-- **Series in progress**: one row per series, with the watch bar (the tick marks the 90% gate), attempts left, and **Go to assessment** once it is unlocked. A series in cooldown shows **Cooldown** and **What to revise** instead.
+- **Series in progress**: one row per series, with the watch bar (the tick marks the 90% gate), attempts left, and **Go to assessment** once it is unlocked. A series in cooldown shows **Cooldown** and **What to revise** instead. A practical you have handed in shows **Awaiting assessment**, or **Returned for changes** if the assessor sent it back.
 - **Your path**: Fundamentals → Practitioner → Architect, with what you have earned and what each next step needs.
 - **Pathways** and **Recent credentials**.
 
@@ -339,13 +339,13 @@ What happens to the rest:
 ## Common questions
 
 **Can I get a refund?**
-Within 7 days of paying, as long as you have watched under 20% of a series and have not started an assessment attempt. Once any attempt has started there is no refund, because you have seen the questions. The rule looks at all your series, not only the one you bought. **Billing** says for each order whether it is still refundable. Refunds are made by the academy to the original payment method, with a credit note; ask at the email address on your invoice.
+Within 7 days of paying, as long as you have watched under 20% of a series and have not started an assessment attempt. Once any attempt has started there is no refund, because you have seen the questions. For a credential purchase the 20% is measured on the series you bought; for a subscription, on any series. **Billing** says for each order whether it is still refundable. Refunds are made by the academy to the original payment method, with a credit note; ask at the email address on your invoice.
 
 **I subscribed. Why can't I sit the assessment?**
 A subscription covers watching only. Buy the credential for that series to get 2 attempts.
 
 **How many attempts do I get?**
-A credential purchase includes 2. An extra attempt add-on (RM 49) gives 1 more. A seat from your organisation comes with 3. After a failed attempt you wait 24 h before the next one.
+A credential purchase includes 2. An extra attempt add-on (RM 49) gives 1 more. A seat from your organisation gives 3 for each certificate. After a failed attempt you wait 24 h before the next one.
 
 **My computer crashed during an attempt. What now?**
 The clock keeps running on the server and your saved answers are kept. Go back to the same browser if you can. If time runs out, the attempt is submitted with what you had saved. You cannot move a running attempt to a different browser.

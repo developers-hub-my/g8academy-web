@@ -13,7 +13,7 @@ As an organisation admin you look after a pack of seats your employer or univers
 Two things are set up by DevHub, not by you:
 
 - **Your organisation and your admin access.** DevHub creates the organisation and makes you its administrator. Until then, every organisation screen says **No organisation**: "Nobody has made you an administrator of one yet." Ask your DevHub contact.
-- **Your seats.** Seats are sold as a seat pack (from 20 seats), paid on invoice or purchase order. There is no "buy seats" button in the app: you arrange the pack with DevHub, and once the academy confirms your payment the seats appear in your pool, ready to hand out.
+- **Your seats.** Seats are sold as a seat pack (from 20 seats), paid on invoice or purchase order. There is no "buy seats" button for you in the app: you arrange the pack with DevHub, the academy records it against your organisation, and once your payment is confirmed the seats appear in your pool, ready to hand out.
 
 What a seat gives the person holding it:
 
@@ -75,7 +75,7 @@ To change the pathway or the date later, open the cohort and click **Edit cohort
 - Everyone else holds a **reserved seat** and shows as **Invited**. The seat becomes theirs when they register with that exact address.
 - Any row that could not be invited (a bad address, or no seats left) is listed by its row number in your file. Fix those rows and invite again; nobody is invited twice.
 
-> **The app does not email the people you invite.** Tell them yourself: go to the academy, click **Start free**, and register with the address you invited. See the [Learner guide](/docs/learner/).
+> **Each person you invite gets an email** naming your organisation, with a link to sign in (if they already have an account) or to register. A new account claims its seat once the person confirms their email address. See the [Learner guide](/docs/learner/).
 
 ### Invite everyone on your domain
 
@@ -151,9 +151,9 @@ The header row is always included, even when there is no data.
 4. Copy the **Redirect URI** and **Scopes** from **Register these with your provider** into a new app registration in your identity provider (Azure AD, Google Workspace, Keycloak or G8ID).
 5. Back here, under **Identity provider**, fill in the **Issuer discovery URL** (it ends in `/.well-known/openid-configuration`), the **Client ID** and the **Client secret** from that registration. The secret is stored encrypted and never shown again.
 6. Check the **Email claim** and **Name claim**, and set the **Button label** shown on the sign-in page.
-7. Switch **Allow sign-in** on and click **Save single sign-on**. (You can save with it off while you are still filling things in, but nobody, including you, can sign in until it is on.)
-8. Click **Test sign-in** at the top of the page. It opens your provider's sign-in in a new tab.
-9. When the test works, give your people the **Sign-in link for your people**.
+7. Click **Save single sign-on** with **Allow sign-in** still off. The status shows **Ready to test**.
+8. Click **Test sign-in**. It opens your provider's sign-in in a new tab, checks the provider answers with an address on your verified domain, and records the result. It signs nobody in, so it is safe while sign-in is off.
+9. When the test works, switch **Allow sign-in** on, save, and give your people the **Sign-in link for your people**.
 
 ![Single sign-on: status Not configured, the OpenID Connect tab, the verified domain and first-time seat option, the identity provider fields, and the redirect URI and sign-in link to register with your provider](/docs/screens/org.sso.png)
 
