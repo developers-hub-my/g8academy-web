@@ -78,7 +78,7 @@ After you submit, the marks are locked. Opening the item again shows "Marked on 
 2. In **What needs to change**, write exactly what the candidate must fix. It is sent to them as written. "Returned" on its own is not accepted.
 3. Click **Return to** followed by the candidate's name.
 
-![The Return for revision dialog for Aminah Rahman, explaining it uses none of her 3 attempts, with the What needs to change box](/docs/screens/assessor-return.png)
+![The Return for revision dialog for Aminah Rahman, explaining it uses none of her 2 attempts, with the What needs to change box](/docs/screens/assessor-return.png)
 
 **What you should see:** "Returned to the candidate for revision." Any marks you had typed are discarded. When the candidate hands in again, the revised work comes back to your queue.
 

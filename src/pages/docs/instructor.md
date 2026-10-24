@@ -187,12 +187,14 @@ The checks are:
 | **An assessment** | Create the exam (Fundamentals) or save a rubric (Practitioner, Architect) |
 | **Every question maps to an outcome** | Fundamentals only. Deactivate or re-import questions for outcomes this version no longer has |
 | **Enough questions to draw a paper** | Fundamentals only. Import more questions, or lower **Questions per attempt** |
-| **A practical, as Architect requires** | Architect only. Save a rubric |
+| **A practical, as Practitioner requires** / **as Architect requires** | Practitioner and Architect. Write the brief and save a rubric |
 | **A rubric to mark the practical against** | Practitioner and Architect. Save a rubric with weights totalling 100 |
 
 1. Open **Details** (or **Versions**) and look at the **Ready to publish** box. It counts the checks done, for example **4 of 4 checks**.
 2. When every check is ticked, click **Publish v1.0**.
-3. A confirmation asks **Publish v1.0?** and reminds you that publishing freezes what the version attests. Click **Publish v1.0** again.
+3. A confirmation asks **Publish v1.0?** and reminds you that publishing freezes what the version attests. Click **Publish now**.
+
+**Launch later instead.** For a series that has never been published, the same dialog has **Or launch later**: pick a date and time (Malaysia time) and click **Schedule launch**. The series shows **Scheduled** and publishes by itself at that time, after the same checks. **Cancel schedule** puts it back to draft; **Publish now** still works while it is scheduled. A series that is already live can't be scheduled, because that would take it out of the catalogue until the date.
 
 **What you should see:** "Version published. Credentials already issued are unaffected." The series card on **My series** shows **Published** and "Live. Edits go into a new draft version, started on Versions." The series appears in the public catalogue straight away.
 
